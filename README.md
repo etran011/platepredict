@@ -50,14 +50,14 @@ in `platepredict.data` and `platepredict.regression`.
 I recalculated these scores with Python 3.12.5, pandas 2.3.3, and scikit-learn
 1.7.2. RMSE is in calories; R² is not a percentage accuracy score.
 
-| Model | Split | RMSE (calories) | R² |
-| --- | --- | ---: | ---: |
-| Linear | Training | 12.305 | 0.996785 |
-| Linear | Validation | 13.793 | 0.996437 |
-| Linear | Test | 12.082 | 0.996968 |
-| Polynomial, degree 2 | Training | 10.302 | 0.997746 |
-| Polynomial, degree 2 | Validation | 11.623 | 0.997470 |
-| Polynomial, degree 2 | Test | 10.034 | 0.997909 |
+| Model | Validation RMSE | Validation R² | Test RMSE | Test R² |
+| --- | ---: | ---: | ---: | ---: |
+| Linear | 13.793 | 0.996437 | 12.082 | 0.996968 |
+| Polynomial, degree 2 | 11.623 | 0.997470 | 10.034 | 0.997909 |
+| KNN | 58.848 | 0.935146 | 42.015 | 0.963334 |
+| SVR | 177.330 | 0.411091 | 171.062 | 0.392205 |
+| Decision tree | 42.053 | 0.966882 | 44.116 | 0.959576 |
+| Random forest | 29.473 | 0.983732 | 26.769 | 0.985116 |
 
 I chose **degree-two polynomial regression** for the demo because its validation
 RMSE is about 2.17 calories lower than linear regression. It expands nine inputs
@@ -65,9 +65,9 @@ to 54 terms plus an intercept, which still makes browser prediction a small
 calculation. Linear regression is simpler, but the polynomial model retains the
 original configuration and improves validation performance without a large
 implementation cost. I make the choice before calculating test metrics; I use
-the test set for reporting, not selection. The table above records my two-model
-reproduction. The `--all-models` command also evaluates the original KNN, SVR,
-decision tree, and random forest.
+the test set for reporting, not selection. After correction, the random forest
+ranks third by validation performance, ahead of the decision tree. The selected
+settings remain `min_samples_leaf=2` and `n_estimators=100`.
 
 During reproduction, I found that scikit-learn 1.9.1 uses a different default
 cutoff for dense least-squares fitting. It reduced the polynomial fit’s numerical
@@ -102,6 +102,30 @@ an exact tie. KNN remains at five neighbors, and SVR keeps the original RBF
 configuration. Their standard scalers fit on training data only. My demo choice
 uses validation RMSE across the evaluated models, never the test scores.
 The archived notebook and report remain unchanged as historical records.
+
+## Website results files
+
+I generate the website’s data with:
+
+```sh
+python -m platepredict.results archive/originals/FastFoodNutritionMenuV2.csv --output results
+```
+
+- [`results/model-comparison.json`](results/model-comparison.json) contains all six
+  models’ training, validation, and test metrics; unchanged tuning candidates and
+  their validation scores; selected settings; split counts; software versions;
+  and the input CSV’s filename and SHA-256 hash.
+- [`results/demo-test-predictions.json`](results/demo-test-predictions.json)
+  contains all 145 held-out test observations and predictions from the demo
+  model, with source-record, restaurant, and item metadata. The `columns` array
+  labels each value in a `rows` entry. Predictions use the training-only fit,
+  selected by validation; none of these records were used to fit the model.
+
+I keep these JSON files compact and retain full numeric precision. Their dataset
+hashes link the chart data to the evaluated CSV. I have not established an
+upstream dataset URL or redistribution license; those fields are explicitly null
+rather than guessed. The files are reproducible results, not an exported browser
+model or a new website deployment.
 
 ## Status
 
