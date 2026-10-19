@@ -219,7 +219,7 @@ I checked all five production pages at phone and desktop widths, keyboard naviga
 
 ### Landing page imagery
 
-I use [Piotr Arnoldes’s pizza photograph](https://www.pexels.com/photo/yummy-pizza-with-pepperoni-slices-on-dark-background-6488932/) for the landing background. I checked the photo’s original source page and its linked [Pexels License](https://www.pexels.com/license/), which permits free website use, downloading, and modification. Attribution is optional; I include the photographer credit on the page. The optimized local WebP uses responsive cropping and a dark overlay.
+I use [Daniel Torobekov’s toasted sandwich photograph](https://www.pexels.com/photo/a-sandwich-on-a-wooden-board-13689827/) for the landing background. I compared it with a mushroom pasta photograph and an isolated burger image; its golden toast, muted greens, and softly lit background fit the warm palette best. The original source links to the [Pexels License](https://www.pexels.com/license/), which permits free downloading, website use, and modification without attribution. I serve an optimized local WebP with responsive cropping and an overlay, without a visible photo credit.
 
 The interior page headers retain [Engin Akyurt’s burger and fries photograph](https://www.pexels.com/photo/burger-and-fries-on-white-plate-2271101/), also under the Pexels License. Both images are illustrative, not dataset records or predicted meals. Their license does not apply to the historical dataset or other project materials.
 

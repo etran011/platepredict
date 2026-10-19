@@ -34,9 +34,9 @@
   background:
     linear-gradient(
       90deg,
-      rgba(8, 14, 10, 0.88) 0%,
-      rgba(8, 14, 10, 0.76) 43%,
-      rgba(8, 14, 10, 0.16) 100%
+      rgba(8, 14, 10, 0.80) 0%,
+      rgba(8, 14, 10, 0.62) 43%,
+      rgba(8, 14, 10, 0.10) 100%
     ),
     linear-gradient(
       0deg,
@@ -269,10 +269,6 @@
   color: #e0e0d4;
   letter-spacing: 0.04em;
 }
-.entry-bottom a:hover {
-  color: white;
-  text-decoration: underline;
-}
 .landing a:focus-visible {
   outline: 2px solid #e9c59a;
   outline-offset: 5px;
@@ -441,11 +437,11 @@
     line-height: 1.5;
   }
   .landing-photo {
-    object-position: 24% center;
+    object-position: 42% center;
   }
   .landing-shade {
     background:
-      linear-gradient(90deg, #08140ee6, #08140e99),
+      linear-gradient(90deg, #08140ed9, #08140e70),
       linear-gradient(0deg, #08140e88, transparent);
   }
 }
