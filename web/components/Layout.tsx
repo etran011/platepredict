@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 export const destinations = [
-  ["index.html", "Overview"],
+  ["overview.html", "Overview"],
   ["estimator.html", "Estimator"],
   ["findings.html", "Findings"],
   ["case-study.html", "Case study"],

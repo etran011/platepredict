@@ -6,6 +6,7 @@ export default defineConfig({
     rollupOptions: {
       input: [
         "index.html",
+        "overview.html",
         "estimator.html",
         "findings.html",
         "case-study.html",
