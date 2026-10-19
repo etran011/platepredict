@@ -539,3 +539,27 @@
   --photo-position: 50% 55%;
   --photo-position-mobile: 30% 55%;
 }
+
+/* Landing-style tonal depth, with neutral charcoal around the header copy. */
+.app-shell:is([data-page="overview.html"], [data-page="findings.html"])
+  :is(.study-opening, .page-intro) {
+  background: #141414;
+}
+.app-shell:is([data-page="overview.html"], [data-page="findings.html"])
+  :is(.study-opening, .page-intro)::before {
+  filter: none;
+}
+.app-shell:is([data-page="overview.html"], [data-page="findings.html"])
+  :is(.study-opening, .page-intro)::after {
+  background:
+    linear-gradient(90deg, #0c0c0ccc 0%, #0c0c0c9e 43%, #0c0c0c6b 100%),
+    linear-gradient(0deg, #0c0c0ca6, #0c0c0c1f 65%, #0c0c0c8c);
+}
+@media (max-width: 760px) {
+  .app-shell:is([data-page="overview.html"], [data-page="findings.html"])
+    :is(.study-opening, .page-intro)::after {
+    background:
+      linear-gradient(90deg, #0c0c0cd9, #0c0c0c99),
+      linear-gradient(0deg, #0c0c0c88, transparent);
+  }
+}
