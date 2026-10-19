@@ -32,11 +32,6 @@ export default function Landing() {
         fetchPriority="high"
       />
       <div className="landing-shade" aria-hidden="true" />
-      <div className="landing-grid" aria-hidden="true">
-        <span />
-        <span />
-        <span />
-      </div>
       <a className="skip-link" href="#main">
         Skip to content
       </a>

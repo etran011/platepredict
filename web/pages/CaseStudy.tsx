@@ -6,7 +6,8 @@ export default function CaseStudy() {
       <PageIntro
         number="03"
         eyebrow="Case study"
-        title="Methods, corrections & limitations"
+        title="Methods, corrections &"
+        accent="limitations"
       >
         <p>
           I built PlatePredict to explore calorie prediction from menu nutrition
@@ -109,7 +110,12 @@ export default function CaseStudy() {
               className="text-link"
               href="https://github.com/etran011/platepredict/tree/main/archive/originals"
             >
-              View the preserved original materials ↗
+              <span className="action-label">
+                View the preserved original materials
+              </span>
+              <span className="action-arrow" aria-hidden="true">
+                ↗
+              </span>
             </a>
           </section>
         </article>

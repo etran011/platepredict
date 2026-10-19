@@ -7,6 +7,7 @@ import Estimator from "./pages/Estimator";
 import Findings from "./pages/Findings";
 import CaseStudy from "./pages/CaseStudy";
 import "./styles.css";
+import "./app-theme.css";
 
 const page = window.location.pathname.split("/").pop() || "index.html";
 const pages: Record<string, React.ComponentType> = {

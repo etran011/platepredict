@@ -5,7 +5,8 @@ export default function Estimator() {
       <PageIntro
         number="01"
         eyebrow="Estimator"
-        title="The nine nutrition inputs"
+        title="The nine nutrition"
+        accent="inputs"
       >
         <p>
           Nine nutrition values are the inputs to my calorie prediction model.
@@ -60,7 +61,10 @@ export default function Estimator() {
             </p>
           </div>
           <a className="text-link" href="findings.html">
-            See how the model performed →
+            <span className="action-label">See how the model performed</span>
+            <span className="action-arrow" aria-hidden="true">
+              ↗
+            </span>
           </a>
         </div>
       </section>

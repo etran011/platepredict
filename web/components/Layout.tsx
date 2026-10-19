@@ -15,7 +15,7 @@ export function Layout({
   children: ReactNode;
 }) {
   return (
-    <>
+    <div className="app-shell">
       <a className="skip-link" href="#main">
         Skip to content
       </a>
@@ -35,10 +35,15 @@ export function Layout({
           ))}
         </nav>
       </header>
-      <main id="main" tabIndex={-1}>
+      <main className="app-main" id="main" tabIndex={-1}>
         {children}
       </main>
       <footer>
+        <p className="footer-heading">
+          Nutrition in.
+          <br />
+          <em>Calories in perspective.</em>
+        </p>
         <a className="brand" href="index.html">
           PlatePredict
         </a>
@@ -50,7 +55,7 @@ export function Layout({
           Previously deployed on AWS EC2 · No longer running
         </span>
       </footer>
-    </>
+    </div>
   );
 }
 
@@ -58,11 +63,13 @@ export function PageIntro({
   number,
   eyebrow,
   title,
+  accent,
   children,
 }: {
   number: string;
   eyebrow: string;
   title: string;
+  accent: string;
   children: ReactNode;
 }) {
   return (
@@ -70,7 +77,9 @@ export function PageIntro({
       <p className="eyebrow">
         {number} / {eyebrow}
       </p>
-      <h1>{title}</h1>
+      <h1>
+        {title} <em>{accent}</em>
+      </h1>
       <div className="intro-copy">{children}</div>
     </section>
   );

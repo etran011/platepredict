@@ -19,7 +19,7 @@ export default function Overview() {
           <h1>
             Predicting calories
             <br />
-            from nutrition data
+            from <em>nutrition data</em>
           </h1>
           <p>
             I compared six regression models using nine nutrition values from
@@ -27,7 +27,10 @@ export default function Overview() {
             evaluation, and the model selected for the browser.
           </p>
           <a className="text-link" href="case-study.html">
-            Read the study <span aria-hidden="true">↗</span>
+            <span className="action-label">Read the study</span>
+            <span className="action-arrow" aria-hidden="true">
+              ↗
+            </span>
           </a>
         </div>
       </section>
@@ -84,7 +87,10 @@ export default function Overview() {
             out from fitting and selection.
           </p>
           <a className="text-link" href="findings.html">
-            Compare all six models ↗
+            <span className="action-label">Compare all six models</span>
+            <span className="action-arrow" aria-hidden="true">
+              ↗
+            </span>
           </a>
         </div>
         <PredictionPlot />
@@ -103,7 +109,12 @@ export default function Overview() {
             Calories are the target, not an input.
           </p>
           <a className="text-link" href="estimator.html">
-            View the estimator introduction ↗
+            <span className="action-label">
+              View the estimator introduction
+            </span>
+            <span className="action-arrow" aria-hidden="true">
+              ↗
+            </span>
           </a>
         </div>
         <ol>
@@ -135,7 +146,10 @@ export default function Overview() {
             these results do not establish performance on unseen restaurants.
           </p>
           <a className="text-link" href="case-study.html#limits">
-            Methods and limitations ↗
+            <span className="action-label">Methods and limitations</span>
+            <span className="action-arrow" aria-hidden="true">
+              ↗
+            </span>
           </a>
         </div>
       </section>

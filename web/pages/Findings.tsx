@@ -13,7 +13,8 @@ export default function Findings() {
       <PageIntro
         number="02"
         eyebrow="Findings"
-        title="Comparing six regression models"
+        title="Comparing six regression"
+        accent="models"
       >
         <p>
           Polynomial and linear regression had the lowest validation errors
@@ -38,7 +39,10 @@ export default function Findings() {
             not establish performance on unseen restaurants.
           </p>
           <a className="text-link" href="case-study.html">
-            Read the methodology →
+            <span className="action-label">Read the methodology</span>
+            <span className="action-arrow" aria-hidden="true">
+              ↗
+            </span>
           </a>
         </div>
         <PredictionPlot />
