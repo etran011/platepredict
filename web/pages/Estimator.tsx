@@ -2,7 +2,11 @@ import { PageIntro } from "../components/Layout";
 export default function Estimator() {
   return (
     <>
-      <PageIntro number="01" eyebrow="Estimator" title="Start with the label.">
+      <PageIntro
+        number="01"
+        eyebrow="Estimator"
+        title="The nine nutrition inputs"
+      >
         <p>
           Nine nutrition values are the inputs to my calorie prediction model.
           The browser model is ready; the interactive form is the next part of
@@ -13,7 +17,7 @@ export default function Estimator() {
         <div className="nutrition-panel">
           <div className="figure-heading">
             <h2>Nutrition inputs</h2>
-            <span className="pill">Preview</span>
+            <span className="figure-meta">Preview</span>
           </div>
           <p>All nine values will be required for one menu item.</p>
           <ul>
@@ -37,10 +41,7 @@ export default function Estimator() {
         </div>
         <div className="reading-column">
           <p className="eyebrow">Behind the estimate</p>
-          <h2>
-            A small model.
-            <br />A clear purpose.
-          </h2>
+          <h2>Degree-2 polynomial regression</h2>
           <p>
             I selected degree-2 polynomial regression using validation results.
             Its exported coefficients let the same calculation run directly in a

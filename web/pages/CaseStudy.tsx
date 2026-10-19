@@ -6,7 +6,7 @@ export default function CaseStudy() {
       <PageIntro
         number="03"
         eyebrow="Case study"
-        title="Revisiting the work, keeping the evidence."
+        title="Methods, corrections & limitations"
       >
         <p>
           I built PlatePredict to explore calorie prediction from menu nutrition
@@ -25,7 +25,7 @@ export default function CaseStudy() {
         <article className="study-copy">
           <section id="data">
             <p className="eyebrow">01 / The data</p>
-            <h2>A menu, in numbers.</h2>
+            <h2>Preparing the nutrition data</h2>
             <p>
               My historical nutrition CSV contains{" "}
               {results.rows.raw.toLocaleString("en-US")} rows. After converting
@@ -41,7 +41,7 @@ export default function CaseStudy() {
           </section>
           <section id="method">
             <p className="eyebrow">02 / The method</p>
-            <h2>Train. Validate. Then test.</h2>
+            <h2>Training and evaluation</h2>
             <p>
               I kept the original nine nutrition inputs and two random splits
               with random_state=42: 15% for testing, then 15% of the remainder
@@ -69,7 +69,7 @@ export default function CaseStudy() {
           </section>
           <section id="corrections">
             <p className="eyebrow">03 / Corrections</p>
-            <h2>A clearer evaluation.</h2>
+            <h2>Correcting the evaluation</h2>
             <p>
               During reproduction, I corrected reversed observed and predicted
               arguments in random-forest R² tuning, replaced reused
@@ -80,7 +80,7 @@ export default function CaseStudy() {
           </section>
           <section id="limits">
             <p className="eyebrow">04 / Limitations</p>
-            <h2>A useful fit isn’t the whole story.</h2>
+            <h2>What these results establish</h2>
             <p>
               Repeated nutrition profiles can appear across the random splits.
               The results do not show how the model generalizes to new
@@ -95,7 +95,7 @@ export default function CaseStudy() {
           </section>
           <section id="history">
             <p className="eyebrow">05 / Deployment history</p>
-            <h2>From EC2 to the browser.</h2>
+            <h2>Deployment history</h2>
             <p>
               I previously deployed PlatePredict on AWS EC2. I no longer
               maintain that deployment, and it is not running.

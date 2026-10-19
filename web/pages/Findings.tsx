@@ -13,7 +13,7 @@ export default function Findings() {
       <PageIntro
         number="02"
         eyebrow="Findings"
-        title="The simplest contenders stood out."
+        title="Comparing six regression models"
       >
         <p>
           Polynomial and linear regression had the lowest validation errors
@@ -24,11 +24,7 @@ export default function Findings() {
       <section className="findings-grid">
         <div>
           <p className="eyebrow">Selected model / Degree 2</p>
-          <h2>
-            Close agreement.
-            <br />
-            With limits.
-          </h2>
+          <h2>Held-out prediction error</h2>
           <div className="metric">
             <strong>
               {selected.metrics.test.rmse_calories.toFixed(2)}
@@ -50,11 +46,7 @@ export default function Findings() {
       <section className="comparison">
         <div className="section-heading">
           <p className="eyebrow">Six models, one comparison</p>
-          <h2>
-            Validation chose the model.
-            <br />
-            Testing checked the result.
-          </h2>
+          <h2>Validation and test results</h2>
           <p>
             Lower RMSE is better. Model selection used the{" "}
             {results.rows.validation}-item validation set, before inspecting
@@ -68,7 +60,10 @@ export default function Findings() {
           tabIndex={0}
         >
           <table>
-            <caption>Corrected regression results · error in kcal · scroll for all columns</caption>
+            <caption>
+              Corrected regression results · error in kcal · scroll for all
+              columns
+            </caption>
             <thead>
               <tr>
                 <th scope="col">Model</th>

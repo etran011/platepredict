@@ -21,10 +21,7 @@ export function Layout({
       </a>
       <header className="site-header">
         <a className="brand" href="index.html" aria-label="PlatePredict home">
-          <span className="brand-mark" aria-hidden="true">
-            ◒
-          </span>{" "}
-          PlatePredict<span className="brand-dot">.</span>
+          PlatePredict
         </a>
         <nav aria-label="Main navigation">
           {destinations.map(([href, label]) => (
@@ -43,11 +40,11 @@ export function Layout({
       </main>
       <footer>
         <a className="brand" href="index.html">
-          PlatePredict.
+          PlatePredict
         </a>
-        <p>A closer look at the numbers behind nutrition.</p>
+        <p>Nutrition data / Regression study</p>
         <a href="https://github.com/etran011/platepredict">
-          Explore the source <span aria-hidden="true">↗</span>
+          Source & original materials <span aria-hidden="true">↗</span>
         </a>
         <span className="footer-note">
           Previously deployed on AWS EC2 · No longer running

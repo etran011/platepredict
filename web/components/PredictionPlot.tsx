@@ -8,13 +8,13 @@ export function PredictionPlot() {
   const x = (n: number) => 64 + (n / max) * 340;
   const y = (n: number) => 340 - (n / max) * 270;
   return (
-    <figure className="plot-card">
+    <figure className="prediction-figure">
       <div className="figure-heading">
-        <span className="eyebrow">Model in focus</span>
-        <span className="pill">Held-out test set</span>
+        <span className="eyebrow">Figure 01 / Polynomial regression</span>
+        <span className="figure-meta">Held-out test set</span>
       </div>
-      <h2>Observed. Predicted.</h2>
-      <p>Degree-2 polynomial regression</p>
+      <h2>Observed vs. predicted calories</h2>
+      <p>Each point represents one held-out menu item.</p>
       <svg
         viewBox="0 0 460 400"
         role="img"
