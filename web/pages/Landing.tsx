@@ -1,100 +1,126 @@
-import results from "../../results/model-comparison.json";
-import { PredictionPlot } from "../components/PredictionPlot";
+import "./landing.css";
+
+function EntryAction({
+  href,
+  children,
+  secondary = false,
+}: {
+  href: string;
+  children: React.ReactNode;
+  secondary?: boolean;
+}) {
+  return (
+    <a
+      className={`entry-action${secondary ? " entry-action-secondary" : ""}`}
+      href={href}
+    >
+      <span>{children}</span>
+      <span className="entry-arrow" aria-hidden="true">
+        ↗
+      </span>
+    </a>
+  );
+}
 
 export default function Landing() {
   return (
-    <>
-      <section className="home-intro">
-        <div>
-          <p className="eyebrow">Nutrition data · Regression analysis</p>
+    <div className="landing">
+      <img
+        className="landing-photo"
+        src={`${import.meta.env.BASE_URL}images/menu-meal.jpg`}
+        alt=""
+        fetchPriority="high"
+      />
+      <div className="landing-shade" aria-hidden="true" />
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+      <header className="entry-header">
+        <a
+          className="entry-brand"
+          href="index.html"
+          aria-label="PlatePredict home"
+        >
+          PlatePredict
+        </a>
+        <span className="entry-descriptor">Nutrition / Regression</span>
+        <nav aria-label="Main navigation">
+          <a href="overview.html">The study</a>
+          <a href="findings.html">Findings</a>
+          <a href="case-study.html">Case study</a>
+        </nav>
+        <a className="header-start" href="estimator.html">
+          Get Started <span aria-hidden="true">↗</span>
+        </a>
+      </header>
+      <main id="main" className="entry-main" tabIndex={-1}>
+        <div className="entry-copy">
+          <p className="entry-kicker">From the nutrition label to the model</p>
           <h1>
-            Calorie prediction,
-            <br />
-            with the work behind it.
+            <span>Nutrition in.</span>
+            <span>Calories in</span>
+            <em>perspective.</em>
           </h1>
-          <p className="home-description">
-            Estimate calories from nine nutrition values and explore the
-            original six-model comparison. My methods, corrected results, and
-            limitations are all here.
+          <p className="entry-summary">
+            Estimate calories from nine nutrition values.
+            <br />
+            Explore what the original regression models found.
           </p>
-          <div className="home-actions">
-            <a className="primary-button" href="estimator.html">
-              Get Started <span aria-hidden="true">→</span>
-            </a>
-            <a className="secondary-button" href="findings.html">
+          <div className="entry-actions">
+            <EntryAction href="estimator.html">Get Started</EntryAction>
+            <EntryAction href="findings.html" secondary>
               Explore the findings
-            </a>
+            </EntryAction>
           </div>
-          <p className="availability">
-            Estimator introduction available. Interactive form in development.
+          <p className="entry-status">
+            Estimator introduction available · Interactive form in development
           </p>
         </div>
-        <aside className="model-summary">
-          <div className="panel-title">Selected regression model</div>
-          <div className="model-summary-body">
-            <code>polynomial_degree_2</code>
-            <p>Nine nutrition inputs → Calories (kcal)</p>
-            <dl>
-              <div>
-                <dt>Validation RMSE</dt>
-                <dd>
-                  {results.models.polynomial_degree_2.metrics.validation.rmse_calories.toFixed(
-                    2,
-                  )}{" "}
-                  <small>kcal</small>
-                </dd>
-              </div>
-              <div>
-                <dt>Held-out test RMSE</dt>
-                <dd>
-                  {results.models.polynomial_degree_2.metrics.test.rmse_calories.toFixed(
-                    2,
-                  )}{" "}
-                  <small>kcal</small>
-                </dd>
-              </div>
-            </dl>
-            <p className="small-note">
-              Selected using validation results. Test data were held out from
-              fitting and selection.
-            </p>
-          </div>
-        </aside>
-      </section>
-      <div className="home-counts">
-        <span>
-          <strong>964</strong> cleaned records
-        </span>
-        <span>
-          <strong>9</strong> nutrition inputs
-        </span>
-        <span>
-          <strong>6</strong> regression models
-        </span>
-        <span>
-          <strong>145</strong> held-out test items
-        </span>
-      </div>
-      <section className="home-evidence">
-        <div>
-          <p className="eyebrow">Evaluate the evidence</p>
-          <h2>Predictions against observed calories</h2>
-          <p>
-            The exported polynomial model reproduces the Python calculation in
-            the browser. The study compares it with the other original
-            regression models.
+        <aside className="entry-panel" aria-labelledby="panel-title">
+          <p className="panel-kicker">
+            Inside PlatePredict <span aria-hidden="true">↗</span>
           </p>
-          <p>
-            These results describe this dataset. They do not establish
-            performance on unseen restaurants or provide an uncertainty interval
-            for a meal.
-          </p>
-          <a className="text-link" href="case-study.html">
-            Read the methodology <span aria-hidden="true">→</span>
+          <h2 id="panel-title">
+            A closer look at
+            <br />a calorie estimate.
+          </h2>
+          <dl>
+            <div>
+              <dt>
+                <span>01</span> Nutrition inputs
+              </dt>
+              <dd>Nine values, including fat, carbohydrates, and protein.</dd>
+            </div>
+            <div>
+              <dt>
+                <span>02</span> Calorie estimate
+              </dt>
+              <dd>
+                Degree-2 polynomial regression, selected using validation
+                results.
+              </dd>
+            </div>
+            <div>
+              <dt>
+                <span>03</span> Model comparison
+              </dt>
+              <dd>
+                Six original models. Clearly separated validation and test
+                results.
+              </dd>
+            </div>
+          </dl>
+          <a href="overview.html">
+            Read the original study’s context <span aria-hidden="true">→</span>
           </a>
-        </div>
-        <PredictionPlot />
-      </section>
-    </>
+        </aside>
+      </main>
+      <div className="entry-bottom">
+        <span>964 complete records / 9 inputs / 6 models</span>
+        <a href="https://www.pexels.com/photo/burger-and-fries-on-white-plate-2271101/">
+          Photo: Engin Akyurt / Pexels
+        </a>
+      </div>
+    </div>
   );
 }

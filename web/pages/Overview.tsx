@@ -19,7 +19,7 @@ export default function Overview() {
           <h1>
             Predicting calories
             <br />
-            from nutrition data
+            from <em>nutrition data</em>
           </h1>
           <p>
             I compared six regression models using nine nutrition values from

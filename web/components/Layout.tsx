@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 
 export const destinations = [
-  ["index.html", "Home"],
   ["overview.html", "Overview"],
   ["estimator.html", "Estimator"],
   ["findings.html", "Findings"],
@@ -35,14 +34,16 @@ export function Layout({
             </a>
           ))}
         </nav>
-        <a className="nav-action" href="estimator.html">
-          Get Started
-        </a>
       </header>
       <main className="app-main" id="main" tabIndex={-1}>
         {children}
       </main>
       <footer>
+        <p className="footer-heading">
+          Nutrition in.
+          <br />
+          <em>Calories in perspective.</em>
+        </p>
         <a className="brand" href="index.html">
           PlatePredict
         </a>
@@ -77,7 +78,7 @@ export function PageIntro({
         {number} / {eyebrow}
       </p>
       <h1>
-        {title} {accent}
+        {title} <em>{accent}</em>
       </h1>
       <div className="intro-copy">{children}</div>
     </section>
