@@ -213,12 +213,12 @@ npm run build
 npm run preview
 ```
 
-The local site is served under `/platepredict/`. The production build goes to `dist/`; publication is a separate step. Shared navigation and charts live in `web/components`, page content in `web/pages`, and the visual system in `web/styles.css`. The findings and scatter plot read the existing results files. Typography uses Google Fonts with local system fallbacks.
+The local site is served under `/platepredict/`. The production build goes to `dist/`; publication is a separate step. Shared navigation and charts live in `web/components`, page content in `web/pages`, and the visual system in `web/styles.css`. The findings and scatter plot read the existing results files. Typography uses local system sans-serif and monospace fonts.
 
-I checked all four production pages at phone and desktop widths, keyboard navigation, the skip link, and reduced-motion behavior. The existing browser inference checks still run with `npm test`.
+I checked all five production pages at phone and desktop widths, keyboard navigation, the skip link, and reduced-motion behavior. The existing browser inference checks still run with `npm test`.
 
 ### Landing page imagery
 
-I use [Engin Akyurt’s burger and fries photograph](https://www.pexels.com/photo/burger-and-fries-on-white-plate-2271101/) under the [Pexels License](https://www.pexels.com/license/). The local image is resized and displayed with a dark overlay. It is illustrative, not a dataset record or a predicted meal. The photograph’s license does not apply to the historical dataset or other project materials.
+I previously used [Engin Akyurt’s burger and fries photograph](https://www.pexels.com/photo/burger-and-fries-on-white-plate-2271101/) under the [Pexels License](https://www.pexels.com/license/). The retained image is no longer displayed in the current interface. It is illustrative, not a dataset record or a predicted meal. The photograph’s license does not apply to the historical dataset or other project materials.
 
-The landing page links to the existing estimator introduction and findings. The study overview remains at `overview.html`. Entrance motion runs once and is disabled for reduced-motion preferences. Supported browsers use a brief native cross-document transition; other browsers follow the same ordinary links immediately.
+The landing page links to the existing estimator introduction and findings. The study overview remains at `overview.html`. The interface uses compact navigation, shared neutral surfaces, and subtle control feedback. Reduced-motion preferences disable transitions.
