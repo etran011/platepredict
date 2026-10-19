@@ -127,11 +127,36 @@ upstream dataset URL or redistribution license; those fields are explicitly null
 rather than guessed. The files are reproducible results, not an exported browser
 model or a new website deployment.
 
+## Offline model export
+
+I export the validation-selected polynomial model without refitting it on held-out
+records:
+
+```sh
+python -m platepredict.export archive/originals/FastFoodNutritionMenuV2.csv
+```
+
+[`results/demo-model.v1.json`](results/demo-model.v1.json) uses schema version 1
+and model version `1.0.0`. It contains the 54 coefficients, intercept, ordered
+feature names and units, exact polynomial powers, training-only feature ranges,
+and dataset hash. The model uses raw nutrient values with no scaling; the export
+states that explicitly. Fat, carbohydrates, fiber, sugars, and protein use grams;
+cholesterol and sodium use milligrams. Predicted Calories are in kcal.
+
+I also generate `tests/fixtures/browser-parity.v1.json` with Python predictions
+for all 145 test records and 31 boundary cases: zero, training minima/maxima,
+training means, and individual features at or beyond their training bounds.
+My numerical agreement rule is
+`abs(actual - expected) <= 1e-7 + 1e-10 * abs(expected)` kcal. This is a numerical
+comparison tolerance, not an uncertainty interval. I preserve the raw fitted
+prediction rather than clamping it.
+
 ## Status
 
 I’ve extracted preparation and corrected evaluation for my six original
 regression models. I plan to present the study and estimator in a polished web app.
-Browser model export, frontend work, and deployment are not part of this step.
+The offline browser artifact is exported. Frontend work and deployment have not
+started.
 
 I previously deployed the project on AWS EC2, but I no longer maintain that
 deployment. The new web app has not been built or deployed.
