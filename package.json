@@ -1,0 +1,16 @@
+{
+  "name": "platepredict-browser",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:inference": "tsc --project tsconfig.json",
+    "test": "npm run build:inference && node --test browser/inference.test.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}

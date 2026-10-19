@@ -151,12 +151,52 @@ My numerical agreement rule is
 comparison tolerance, not an uncertainty interval. I preserve the raw fitted
 prediction rather than clamping it.
 
+## Browser inference module
+
+I evaluate the exported polynomial in [`browser/inference.ts`](browser/inference.ts).
+It has no runtime dependencies and needs only the static JSON artifact. Python
+remains offline; prediction does not call a server or external API.
+
+```sh
+npm ci
+npm test
+```
+
+This type-checks and compiles the module, then runs its parity, input-validation,
+model-loading, and range-warning checks. The compiled files in `.build/` are
+ignored. I keep the TypeScript compiler as a development-only dependency.
+
+The reusable functions are `parseModel(json)`, `loadModel(url)`, and
+`predict(model, inputs)`. I pass the model URL relative to the deployed site so
+GitHub Pages’ `/platepredict/` path works. Loading rejects network/HTTP failures,
+invalid JSON, incompatible schemas, and malformed models with `ModelLoadError`;
+the caller can show that message and offer a retry.
+
+Inputs must contain all nine named features as finite, nonnegative numbers in
+the artifact’s units. Blank strings, numeric strings, nulls, and missing values
+are rejected rather than silently converted to zero. `InputValidationError`
+contains the invalid fields. Extra values such as `Calories` do not enter the
+prediction.
+
+`predict` returns `{ calories, warnings }`. Each warning identifies a nutrient
+outside its training-only range, with its value, unit, and training bounds.
+I still evaluate the supplied value; the warning is not a correction or a
+confidence interval. Negative model outputs remain negative. For example, the
+all-zero input produces about −0.6445 kcal, which reflects the unconstrained
+regression rather than a physically valid energy measurement. Numerical overflow
+raises `PredictionError` instead of returning Infinity or clamping the result.
+
+I verified all 176 Python parity cases with an absolute tolerance of `1e-7` kcal
+plus a relative tolerance of `1e-10`. The largest observed difference in the
+TypeScript checks was approximately `4.55e-13` kcal. The module also runs as a
+static browser ES module; no frontend UI is included in this phase.
+
 ## Status
 
 I’ve extracted preparation and corrected evaluation for my six original
 regression models. I plan to present the study and estimator in a polished web app.
-The offline browser artifact is exported. Frontend work and deployment have not
-started.
+The browser artifact and standalone TypeScript inference are ready. Frontend
+features and deployment have not started.
 
 I previously deployed the project on AWS EC2, but I no longer maintain that
 deployment. The new web app has not been built or deployed.
