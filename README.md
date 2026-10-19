@@ -189,14 +189,30 @@ raises `PredictionError` instead of returning Infinity or clamping the result.
 I verified all 176 Python parity cases with an absolute tolerance of `1e-7` kcal
 plus a relative tolerance of `1e-10`. The largest observed difference in the
 TypeScript checks was approximately `4.55e-13` kcal. The module also runs as a
-static browser ES module; no frontend UI is included in this phase.
+static browser ES module.
 
 ## Status
 
 I’ve extracted preparation and corrected evaluation for my six original
 regression models. I plan to present the study and estimator in a polished web app.
-The browser artifact and standalone TypeScript inference are ready. Frontend
-features and deployment have not started.
+The browser artifact and standalone TypeScript inference are ready. The frontend
+foundation now includes the overview, estimator introduction, findings, and case
+study. The interactive estimator interface and deployment remain separate steps.
 
 I previously deployed the project on AWS EC2, but I no longer maintain that
-deployment. The new web app has not been built or deployed.
+deployment. The new web presentation has not been deployed.
+
+## Web presentation
+
+I use React, TypeScript, and Vite for the static presentation. The overview, estimator introduction, findings, and case study each have their own HTML entry point, so direct links work on GitHub Pages without a routing fallback. The estimator interface is not part of this foundation.
+
+```sh
+npm ci
+npm run dev
+npm run build
+npm run preview
+```
+
+The local site is served under `/platepredict/`. The production build goes to `dist/`; publication is a separate step. Shared navigation and charts live in `web/components`, page content in `web/pages`, and the visual system in `web/styles.css`. The findings and scatter plot read the existing results files. Typography uses Google Fonts with local system fallbacks.
+
+I checked all four production pages at phone and desktop widths, keyboard navigation, the skip link, and reduced-motion behavior. The existing browser inference checks still run with `npm test`.
