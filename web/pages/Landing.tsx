@@ -62,7 +62,7 @@ export default function Landing() {
             <em>perspective.</em>
           </h1>
           <p className="entry-summary">
-            Estimate calories from nine nutrition values.
+            Compare reported calories with a model estimate.
             <br />
             Explore what the original regression models found.
           </p>
@@ -73,7 +73,7 @@ export default function Landing() {
             </EntryAction>
           </div>
           <p className="entry-status">
-            Nine nutrition inputs · Predictions run in your browser
+            Fast-food-trained model · Nine nutrition inputs
           </p>
         </div>
         <aside className="entry-panel" aria-labelledby="panel-title">

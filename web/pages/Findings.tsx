@@ -22,6 +22,41 @@ export default function Findings() {
           results from my existing study.
         </p>
       </PageIntro>
+      <section
+        className="comparison-context"
+        aria-labelledby="comparison-context-title"
+      >
+        <p className="eyebrow">What the comparison means</p>
+        <h2 id="comparison-context-title">
+          Reported calories, model perspective.
+        </h2>
+        <p>
+          I use the original fast-food-trained model to compare a food’s
+          reported calories with a prediction from its nine nutrition values.
+          Actual calories are a comparison value, never a prediction input. Use
+          the same serving for every value.
+        </p>
+        <p>
+          A below-prediction result means “Lower in calories than the model
+          predicts for these nutrition inputs.” It does not measure overall
+          nutritional quality or establish that a food is healthier. Calories
+          are already closely related to the supplied macronutrients; small
+          differences may reflect label rounding or model error.
+        </p>
+        <p>
+          The results below evaluate prediction accuracy on the original
+          dataset, not the nutritional quality of a new food. The random split
+          does not establish accuracy for foods outside that dataset. Historical
+          presets may have appeared in training and are not independent
+          evaluation examples.
+        </p>
+        <a className="text-link" href="estimator.html">
+          <span className="action-label">Compare reported calories</span>
+          <span className="action-arrow" aria-hidden="true">
+            ↗
+          </span>
+        </a>
+      </section>
       <section className="findings-grid">
         <div>
           <p className="eyebrow">Selected model / Degree 2</p>

@@ -509,3 +509,8 @@
 .landing .entry-panel > a:hover {
   color: #805737;
 }
+
+.comparison-context { padding: 40px 0 0; max-width: 850px; }
+.comparison-context .eyebrow { color: #e9c59a; }
+.comparison-context h2 { font-size: 2rem; margin: 14px 0; }
+.comparison-context p { line-height: 1.7; margin-bottom: 18px; }

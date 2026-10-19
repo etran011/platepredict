@@ -3,12 +3,18 @@
     "target": "ES2022",
     "module": "ES2022",
     "moduleResolution": "Bundler",
-    "lib": ["ES2022", "DOM"],
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
     "strict": true,
     "isolatedModules": true,
     "noEmitOnError": true,
     "rootDir": "browser",
     "outDir": ".build"
   },
-  "include": ["browser/inference.ts"]
+  "include": [
+    "browser/inference.ts",
+    "browser/comparison.ts"
+  ]
 }

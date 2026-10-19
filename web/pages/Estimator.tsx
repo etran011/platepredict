@@ -8,6 +8,7 @@ import {
   type Prediction,
   type FeatureName,
 } from "../../browser/inference";
+import { compareCalories } from "../../browser/comparison";
 import modelUrl from "../../results/demo-model.v1.json?url";
 import source from "../data/presets.json";
 import "./estimator.css";
@@ -38,6 +39,11 @@ const format = (n: number) =>
 
 export default function Estimator() {
   const [values, setValues] = useState(empty);
+  const [actual, setActual] = useState("");
+  const [actualError, setActualError] = useState("");
+  const [comparison, setComparison] = useState<ReturnType<
+    typeof compareCalories
+  > | null>(null);
   const [model, setModel] = useState<Model | null>(null);
   const [loadError, setLoadError] = useState(false);
   const [attempt, setAttempt] = useState(0);
@@ -72,11 +78,13 @@ export default function Estimator() {
     setStale(Boolean(result));
     setErrors({});
     setFailure("");
+    setActualError("");
   }
   function selectPreset(id: string) {
     invalidate();
     setPresetId(id);
     const selected = source.presets.find((p) => String(p.source_row) === id);
+    setActual(selected ? String(selected.recorded_calories) : "");
     setValues(
       selected
         ? (Object.fromEntries(
@@ -87,11 +95,14 @@ export default function Estimator() {
   }
   function reset() {
     setValues(empty());
+    setActual("");
+    setComparison(null);
     setPresetId("");
     setResult(null);
     setStale(false);
     setErrors({});
     setFailure("");
+    setActualError("");
     form.current?.querySelector<HTMLInputElement>("input")?.focus();
   }
   function calculate(event: React.FormEvent) {
@@ -110,15 +121,28 @@ export default function Estimator() {
     );
     setErrors(issues);
     setFailure("");
-    if (Object.keys(issues).length) {
+    setActualError("");
+    const reported = Number(actual.trim());
+    const invalidActual =
+      !actual.trim() || !Number.isFinite(reported) || reported < 0;
+    if (invalidActual)
+      setActualError(
+        "Enter actual calories as a finite number, zero or greater.",
+      );
+    if (Object.keys(issues).length || invalidActual) {
       setStale(Boolean(result));
       form.current
-        ?.querySelector<HTMLInputElement>(`[name="${Object.keys(issues)[0]}"]`)
+        ?.querySelector<HTMLInputElement>(
+          `[name="${Object.keys(issues)[0] ?? "actual-calories"}"]`,
+        )
         ?.focus();
       return;
     }
     try {
-      setResult(predict(model, input));
+      // Actual calories stay separate from the nine-feature prediction input.
+      const prediction = predict(model, input);
+      setComparison(compareCalories(reported, prediction.calories));
+      setResult(prediction);
       setStale(false);
     } catch (error) {
       setResult(null);
@@ -140,8 +164,9 @@ export default function Estimator() {
         accent="An estimate out."
       >
         <p>
-          Enter nine nutrition values for one menu item. My existing regression
-          model calculates an estimate directly in your browser.
+          Compare the reported calories of your food with an estimate from my
+          model trained on the original fast-food dataset. Use nutrition values
+          and calories for the same serving.
         </p>
       </PageIntro>
       <section className="estimator-workspace" aria-label="Calorie estimator">
@@ -153,7 +178,7 @@ export default function Estimator() {
         >
           <div className="estimator-form-heading">
             <p className="eyebrow">01 / Nutrition label</p>
-            <h2>Build your estimate</h2>
+            <h2>Compare your food</h2>
             <p>
               All nine values are required. Use grams (g) or milligrams (mg) as
               labeled; enter 0 only when the value is zero.
@@ -244,14 +269,47 @@ export default function Estimator() {
               </div>
             </fieldset>
           ))}
-          {Object.keys(errors).length > 0 && (
+          <fieldset>
+            <legend>Reported calories · comparison only</legend>
+            <div className="nutrition-field">
+              <label htmlFor="actual-calories">
+                Actual calories <span>(kcal)</span>
+              </label>
+              <input
+                id="actual-calories"
+                name="actual-calories"
+                type="text"
+                inputMode="decimal"
+                required
+                autoComplete="off"
+                value={actual}
+                aria-invalid={Boolean(actualError)}
+                aria-describedby={`actual-help${actualError ? " actual-error" : ""}`}
+                onChange={(e) => {
+                  invalidate();
+                  setActual(e.target.value);
+                }}
+              />
+              <p id="actual-help" className="preset-note">
+                Enter the calories reported on the label for the same serving.
+                This value is used only for comparison, never as a model input.
+                Presets fill it from the original dataset; you can edit it.
+              </p>
+              {actualError && (
+                <p id="actual-error" className="input-error">
+                  {actualError}
+                </p>
+              )}
+            </div>
+          </fieldset>
+          {(Object.keys(errors).length > 0 || actualError) && (
             <p className="input-error" role="alert">
               Check the highlighted inputs before calculating.
             </p>
           )}
           <div className="estimator-actions">
             <button className="calculate" type="submit" disabled={!model}>
-              Estimate calories <span aria-hidden="true">↗</span>
+              Compare calories <span aria-hidden="true">↗</span>
             </button>
             <button type="button" onClick={reset}>
               Reset inputs
@@ -279,8 +337,8 @@ export default function Estimator() {
             )}
             {model && !result && !failure && (
               <p>
-                Ready when you are. Enter the nutrition values, then select
-                Estimate calories.
+                Ready when you are. Enter the nutrition values and actual
+                calories, then select Compare calories.
               </p>
             )}
             {stale && (
@@ -291,7 +349,7 @@ export default function Estimator() {
             )}
             {result && !stale && (
               <>
-                <p className="estimate-label">Predicted calories</p>
+                <p className="estimate-label">Model-predicted calories</p>
                 <p className="estimate-value">
                   {format(result.calories)} <span>kcal</span>
                 </p>
@@ -299,6 +357,32 @@ export default function Estimator() {
                   Model estimate for the entered nutrition values, rounded to
                   one decimal place.
                 </p>
+                <div className="calorie-comparison">
+                  <p className="estimate-label">
+                    Actual calories · entered for comparison
+                  </p>
+                  <p className="actual-value">
+                    {format(Number(actual))} <span>kcal</span>
+                  </p>
+                  <p className="comparison-difference">{comparison?.text}</p>
+                  {comparison?.direction === "below" && (
+                    <p>
+                      Lower in calories than the model predicts for these
+                      nutrition inputs.
+                    </p>
+                  )}
+                  {comparison?.direction === "above" && (
+                    <p>
+                      Higher in calories than the model predicts for these
+                      nutrition inputs.
+                    </p>
+                  )}
+                  <p>
+                    Difference uses the displayed values rounded to one decimal
+                    place. “Matches prediction” means they match at that
+                    precision.
+                  </p>
+                </div>
                 {result.calories < 0 && (
                   <p className="estimate-warning">
                     The model returned a negative estimate. This is not a
@@ -349,9 +433,10 @@ export default function Estimator() {
               coefficients run here without a Python server.
             </p>
             <p>
-              This estimates calories from a nutrition label. It does not
-              measure a meal, recommend a diet, or provide an individual
-              confidence interval.
+              This compares reported calories with a fast-food-trained model
+              estimate. It does not measure overall nutritional quality. Small
+              differences may reflect label rounding or model error. Calories
+              are already closely related to the supplied macronutrients.
             </p>
             {model && (
               <p className="model-version">
