@@ -242,3 +242,16 @@ The three historical presets in `web/data/presets.json` copy complete values fro
 I compare reported calories with the model’s prediction using a separate “Actual calories” field. It is required for comparison and never enters the nine-feature model input. Presets populate it from recorded dataset calories. Editing it makes the displayed result stale until recalculation. Differences use the displayed calorie values rounded to one decimal place; “Matches prediction” means agreement at that precision, not exact agreement or a confidence interval.
 
 This is a comparison with a model trained on the original fast-food data, not a measure of overall nutritional quality. Calories are already closely related to the supplied macronutrients. Small differences can reflect label rounding or model error; the existing evaluation does not establish accuracy on foods outside the original dataset.
+
+### Findings and original exploration
+
+I show all six models with separate validation and test RMSE and R², using `results/model-comparison.json`. The comparison keeps a fixed scale and validation-based order when switching splits. The demo scatter plot reads every held-out record from `results/demo-test-predictions.json`; an item selector exposes observed and predicted calories without requiring hover.
+
+I recreate the notebook’s 30-bin calorie histogram and fat/carbohydrate scatter plots from `results/original-eda.json`. These plots precede model cleaning in the notebook: numeric calories (including zero) enter the histogram, and each scatter plot uses records with both plotted values. They describe the original data, not an evaluation split. I export those values without retraining or changing the analysis:
+
+```sh
+python -m platepredict.eda archive/originals/FastFoodNutritionMenuV2.csv
+python -m unittest discover -s tests -p 'test_eda.py'
+```
+
+The findings page includes keyboard-operated chart controls, readable metric and EDA tables, and explanations of split boundaries and evaluation corrections. High R² reflects how closely related nutrition inputs reproduce recorded calories on this split; it does not measure nutritional quality or establish performance on new restaurants.
