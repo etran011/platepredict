@@ -62,7 +62,6 @@
   position: relative;
   isolation: isolate;
   color: #fffdf4;
-  background: #152019;
   max-width: none;
   margin: 0 -5.556%;
   padding: 60px 5% 56px;
@@ -79,7 +78,6 @@
   background-image: var(--page-photo);
   background-position: var(--photo-position);
   background-size: cover;
-  filter: saturate(0.8);
 }
 .app-shell .page-intro:after,
 .app-shell .study-opening:after {
@@ -87,7 +85,6 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: #0c1912cc;
 }
 .app-shell .page-intro h1,
 .app-shell .study-opening h1 {
@@ -538,28 +535,4 @@
   --page-photo: url("/images/case-study-ingredients.webp");
   --photo-position: 50% 55%;
   --photo-position-mobile: 30% 55%;
-}
-
-/* Landing-style tonal depth, with neutral charcoal around the header copy. */
-.app-shell:is([data-page="overview.html"], [data-page="findings.html"])
-  :is(.study-opening, .page-intro) {
-  background: #141414;
-}
-.app-shell:is([data-page="overview.html"], [data-page="findings.html"])
-  :is(.study-opening, .page-intro)::before {
-  filter: none;
-}
-.app-shell:is([data-page="overview.html"], [data-page="findings.html"])
-  :is(.study-opening, .page-intro)::after {
-  background:
-    linear-gradient(90deg, #0c0c0ccc 0%, #0c0c0c9e 43%, #0c0c0c6b 100%),
-    linear-gradient(0deg, #0c0c0ca6, #0c0c0c1f 65%, #0c0c0c8c);
-}
-@media (max-width: 760px) {
-  .app-shell:is([data-page="overview.html"], [data-page="findings.html"])
-    :is(.study-opening, .page-intro)::after {
-    background:
-      linear-gradient(90deg, #0c0c0cd9, #0c0c0c99),
-      linear-gradient(0deg, #0c0c0c88, transparent);
-  }
 }

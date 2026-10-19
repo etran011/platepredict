@@ -1,0 +1,27 @@
+/* One neutral photo treatment for the landing and every page header. */
+:root {
+  --photo-filter: none;
+  --photo-surface: #141414;
+  --photo-overlay:
+    linear-gradient(90deg, #0c0c0ccc 0%, #0c0c0c9e 43%, #0c0c0c6b 100%),
+    linear-gradient(0deg, #0c0c0ca6, #0c0c0c1f 65%, #0c0c0c8c);
+}
+.landing,
+.app-shell :is(.page-intro, .study-opening) {
+  background: var(--photo-surface);
+}
+.landing-photo,
+.app-shell :is(.page-intro, .study-opening)::before {
+  filter: var(--photo-filter);
+}
+.landing-shade,
+.app-shell :is(.page-intro, .study-opening)::after {
+  background: var(--photo-overlay);
+}
+@media (max-width: 760px) {
+  :root {
+    --photo-overlay:
+      linear-gradient(90deg, #0c0c0cd9, #0c0c0c99),
+      linear-gradient(0deg, #0c0c0c88, transparent);
+  }
+}

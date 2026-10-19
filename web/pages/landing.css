@@ -9,7 +9,6 @@
 .landing {
   position: relative;
   isolation: isolate;
-  background: #141a15;
   color: #fffdf4;
   min-height: 100svh;
   overflow: hidden;
@@ -31,19 +30,6 @@
 }
 .landing-shade {
   z-index: -2;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(8, 14, 10, 0.80) 0%,
-      rgba(8, 14, 10, 0.62) 43%,
-      rgba(8, 14, 10, 0.10) 100%
-    ),
-    linear-gradient(
-      0deg,
-      rgba(8, 14, 10, 0.65),
-      rgba(8, 14, 10, 0.12) 65%,
-      rgba(8, 14, 10, 0.55)
-    );
 }
 .entry-header {
   display: flex;
@@ -282,11 +268,9 @@
 @keyframes photo-reveal {
   from {
     transform: scale(1.035);
-    filter: brightness(0.7);
   }
   to {
     transform: scale(1);
-    filter: brightness(1);
   }
 }
 @keyframes entry-rise {
@@ -438,11 +422,6 @@
   }
   .landing-photo {
     object-position: 42% center;
-  }
-  .landing-shade {
-    background:
-      linear-gradient(90deg, #08140ed9, #08140e70),
-      linear-gradient(0deg, #08140e88, transparent);
   }
 }
 @media (prefers-reduced-motion: reduce) {
