@@ -226,13 +226,13 @@
   margin-top: 24px;
   padding-top: 20px;
 }
-.calorie-comparison .actual-value {
+.calorie-comparison .reported-value {
   font-size: 2rem;
   margin: 12px 0;
   font-variant-numeric: tabular-nums;
   overflow-wrap: anywhere;
 }
-.actual-value span {
+.reported-value span {
   font-size: 1rem;
 }
 .calorie-comparison .comparison-difference {

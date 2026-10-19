@@ -1,3 +1,4 @@
+import { ReviewHeuristic } from "../components/ReviewHeuristic";
 import { PageIntro } from "../components/Layout";
 import results from "../../results/model-comparison.json";
 import "./case-study.css";
@@ -25,11 +26,11 @@ function StudyLink({ href, children }: { href: string; children: string }) {
 export default function CaseStudy() {
   return <>
     <PageIntro number="03" eyebrow="Case study" title="From nutrition labels to" accent="a model estimate">
-      <p>How I brought an existing calorie-prediction study into the browser: the original approach, a corrected evaluation, and the limits that matter when reading the result.</p>
+      <p>How I adapted an existing fast-food regression project for calorie completion and consistency checking, with the original approach, corrected evaluation, and limits kept explicit.</p>
     </PageIntro>
     <div className="study-editions" aria-label="Original work and modernization">
       <div><p className="eyebrow">Original work</p><p>Nutrition exploration and six regression models in Python.</p></div>
-      <div><p className="eyebrow">Modernization</p><p>Reproducible results, browser inference, and an interactive presentation.</p></div>
+      <div><p className="eyebrow">Modernization</p><p>Calorie completion, consistency review, and browser inference.</p></div>
     </div>
     <div className="study-layout case-narrative">
       <aside><nav aria-label="Case study contents"><p className="eyebrow">Inside the study</p>
@@ -97,15 +98,17 @@ export default function CaseStudy() {
           <p>These changes repair evaluation and presentation. I did not add model families, new datasets, or a broader tuning search.</p>
         </section>
         <section id="limits" aria-labelledby="limits-title">
-          <p className="eyebrow">06 / Reading the evidence</p><h2 id="limits-title">A close fit is not a health verdict.</h2>
+          <p className="eyebrow">06 / Reading the evidence</p><h2 id="limits-title">A review signal needs context.</h2>
           <div className="study-evidence"><div><h3>What the results establish</h3><p>The selected model closely reproduces recorded calories from nutrition values on this dataset’s held-out split. Calories are already closely related to fat, carbohydrates, and protein, so high R² needs that context.</p></div><div><h3>What they do not establish</h3><p>The random split does not test generalization to unseen restaurants. Repeated nutrition profiles can appear across partitions, and excluding incomplete or nonpositive-calorie records narrows the evaluated population.</p></div></div>
           <p>RMSE summarizes error across items; it is not a confidence interval for an individual prediction. High R² is not a percentage of correct predictions. Neither metric establishes overall nutritional quality, dietary suitability, or performance on foods outside the original data.</p>
-          <p>In the modern estimator, “Actual calories” is a separate comparison value, never a model input. A lower reported value means lower calories than the model predicts for those inputs, not a healthier food. Small differences may reflect label rounding or model error. Historical presets may have appeared in training and are not independent evaluation examples.</p>
+          <p>In the modern tool, I use estimates to help fill missing calorie values and check supplied values for consistency. “Reported calories” is optional and never a model input. The original reported value stays intact. These are modernization uses: the original study did not evaluate missing-value imputation or anomaly detection.</p>
+          <ReviewHeuristic />
+          <p>The review rule is derived from the existing held-out errors; it has not been independently evaluated for detecting incorrect entries. Small differences may reflect label rounding or model error. Historical presets may have appeared in training and are not independent evaluation examples. Performance on other foods is not established.</p>
         </section>
         <section id="history" aria-labelledby="history-title">
           <p className="eyebrow">07 / Deployment & modernization</p><h2 id="history-title">An existing study, a new way to explore it.</h2>
-          <div className="study-history"><div><p className="eyebrow">Original deployment · offline</p><h3>AWS EC2</h3><p>I previously deployed PlatePredict on AWS EC2. I no longer maintain that deployment, and it is now offline.</p></div><div><p className="eyebrow">Current modernization</p><h3>Python offline. Predictions in the browser.</h3><p>I extracted reusable preparation and evaluation, exported the existing regression to a versioned JSON artifact, and verified the TypeScript predictions against Python references. The frontend adds manual entry, traceable presets, calorie comparison, and interactive findings.</p><p>The static site is prepared for GitHub Pages without a running Python backend. Publication remains a separate step.</p></div></div>
-          <StudyLink href="estimator.html">Try the calorie comparison</StudyLink>
+          <div className="study-history"><div><p className="eyebrow">Original deployment · offline</p><h3>AWS EC2</h3><p>I previously deployed PlatePredict on AWS EC2. I no longer maintain that deployment, and it is now offline.</p></div><div><p className="eyebrow">Current modernization</p><h3>Python offline. Predictions in the browser.</h3><p>I extracted reusable preparation and evaluation, exported the existing regression to a versioned JSON artifact, and verified the TypeScript predictions against Python references. The frontend adds manual entry, traceable presets, optional reported-calorie comparison, a discrepancy review heuristic, and interactive findings.</p><p>The static site is prepared for GitHub Pages without a running Python backend. Publication remains a separate step.</p></div></div>
+          <StudyLink href="estimator.html">Complete or check calories</StudyLink>
         </section>
         <section id="sources" aria-labelledby="sources-title">
           <p className="eyebrow">08 / Source material</p><h2 id="sources-title">The original work stays intact.</h2>

@@ -1,5 +1,7 @@
 # PlatePredict
 
+PlatePredict is a calorie-completion and consistency-checking tool built from my original fast-food regression project. I use nine nutrition inputs to estimate missing calorie values or compare supplied values with the estimate, while preserving the reported value.
+
 PlatePredict is a legacy machine-learning project that was previously deployed on AWS EC2. That deployment is no longer running.
 
 In my original study, I explored predicting fast-food menu calories from
@@ -194,7 +196,7 @@ static browser ES module.
 ## Status
 
 I’ve extracted preparation and corrected evaluation for my six original
-regression models. I plan to present the study and estimator in a polished web app.
+regression models. I present the study alongside a browser tool for calorie completion and consistency review.
 The browser artifact and standalone TypeScript inference are ready. The frontend
 now includes the overview, interactive estimator, findings, and case study.
 Deployment remains a separate step.
@@ -239,9 +241,17 @@ I reuse the verified browser inference module with the existing versioned model 
 
 The three historical presets in `web/data/presets.json` copy complete values from source rows 0, 100, and 700 of the original CSV (zero-based data records, excluding the header). The file records the dataset SHA-256. Recorded calories are displayed separately from model predictions and are never an input. These examples may have appeared in training and are not independent evaluation examples. Editing a preset switches to manual entry. Predictions display one decimal place; validation uses the unrounded values.
 
-I compare reported calories with the model’s prediction using a separate “Actual calories” field. It is required for comparison and never enters the nine-feature model input. Presets populate it from recorded dataset calories. Editing it makes the displayed result stale until recalculation. Differences use the displayed calorie values rounded to one decimal place; “Matches prediction” means agreement at that precision, not exact agreement or a confidence interval.
+Reported calories are optional and never enter the nine-feature model input. Blank or whitespace-only values mean missing; zero is a supplied value. Negative, nonfinite, and nonnumeric reported values are rejected. When absent, I show “Estimated calories” as a candidate for filling a missing value, with verification and estimated-value labeling advised. A negative model output stays visible with a warning and is not suitable for filling a missing calorie value. No source data is overwritten.
 
-This is a comparison with a model trained on the original fast-food data, not a measure of overall nutritional quality. Calories are already closely related to the supplied macronutrients. Small differences can reflect label rounding or model error; the existing evaluation does not establish accuracy on foods outside the original dataset.
+When supplied, I show reported calories, estimated calories, and their difference. Differences use displayed values rounded to one decimal place; “Matches estimate” means agreement at that precision. Presets populate the reported field from the dataset, but it remains editable and is never replaced by a prediction. Editing either inputs or the reported value makes the result stale until recalculation.
+
+### Discrepancy review heuristic
+
+I flag “Needs review” when the absolute displayed difference is **greater than 56 kcal** (not equal to 56). The shared rule is calculated from `results/demo-test-predictions.json`: the largest absolute error among the 145 held-out predictions is about 55.50 kcal, rounded up to a whole calorie. The comparison uses one-decimal displayed values so the flag agrees with the shown difference. Both above-estimate and below-estimate discrepancies use the same rule.
+
+This is an empirical review heuristic, not a validated anomaly detector or confidence interval. The held-out set supplies the threshold; it does not independently validate the resulting rule. I have not established detection or false-alarm rates for incorrect records. A flag is a reason to check the source, serving size, units, and inputs, not proof that the entry is wrong. An unflagged entry is not verified correct. Small differences can reflect nutrition-label rounding or model error.
+
+Completion and consistency checking are modernization uses, not outcomes evaluated in the original project. The original analysis evaluated regression on complete, positive-calorie records, not missing-value imputation or anomaly detection. The model was trained on historical fast-food data; performance on other foods is not established. Calories are already closely related to the supplied macronutrients, and the tool does not assess nutritional quality.
 
 ### Findings and original exploration
 

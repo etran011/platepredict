@@ -17,14 +17,15 @@ export default function Overview() {
         </div>
         <div className="opening-copy">
           <h1>
-            Predicting calories
+            Completing calories
             <br />
-            from <em>nutrition data</em>
+            with <em>consistency checks</em>
           </h1>
           <p>
-            I compared six regression models using nine nutrition values from
-            menu items. This is a closer look at the data, the corrected
-            evaluation, and the model selected for the browser.
+            I use the existing regression to estimate missing calorie values and
+            review discrepancies in reported values. It builds on my original
+            six-model fast-food study; that study evaluated calorie prediction,
+            not missing-value imputation or anomaly detection.
           </p>
           <a className="text-link" href="case-study.html">
             <span className="action-label">Read the study</span>
@@ -143,7 +144,7 @@ export default function Overview() {
           <p>
             Nutrition inputs already have a close relationship with calories.
             Repeated nutrition profiles can appear across the random splits, and
-            these results do not establish performance on unseen restaurants.
+            these results do not establish performance on unseen restaurants or other foods. Completion estimates need verification; review flags do not prove a reported value is wrong.
           </p>
           <a className="text-link" href="case-study.html#limits">
             <span className="action-label">Methods and limitations</span>

@@ -43,7 +43,7 @@ export default function Landing() {
         >
           PlatePredict
         </a>
-        <span className="entry-descriptor">Nutrition / Regression</span>
+        <span className="entry-descriptor">Calorie completion / Review</span>
         <nav aria-label="Main navigation">
           <a href="overview.html">The study</a>
           <a href="findings.html">Findings</a>
@@ -55,16 +55,16 @@ export default function Landing() {
       </header>
       <main id="main" className="entry-main" tabIndex={-1}>
         <div className="entry-copy">
-          <p className="entry-kicker">From the nutrition label to the model</p>
+          <p className="entry-kicker">Complete missing values. Review discrepancies.</p>
           <h1>
-            <span>Nutrition in.</span>
-            <span>Calories in</span>
-            <em>perspective.</em>
+            <span>Fill the gaps.</span>
+            <span>Check the</span>
+            <em>numbers.</em>
           </h1>
           <p className="entry-summary">
-            Compare reported calories with a model estimate.
+            Estimate missing calories from nutrition inputs.
             <br />
-            Explore what the original regression models found.
+            Spot large discrepancies for review, without overwriting reports.
           </p>
           <div className="entry-actions">
             <EntryAction href="estimator.html">Get Started</EntryAction>
@@ -73,7 +73,7 @@ export default function Landing() {
             </EntryAction>
           </div>
           <p className="entry-status">
-            Fast-food-trained model · Nine nutrition inputs
+            Historical fast-food model · Performance on other foods is not established
           </p>
         </div>
         <aside className="entry-panel" aria-labelledby="panel-title">
@@ -81,32 +81,30 @@ export default function Landing() {
             Inside PlatePredict <span aria-hidden="true">↗</span>
           </p>
           <h2 id="panel-title">
-            A closer look at
-            <br />a calorie estimate.
+            Two uses for
+            <br />one existing model.
           </h2>
           <dl>
             <div>
               <dt>
-                <span>01</span> Nutrition inputs
+                <span>01</span> Complete calories
               </dt>
-              <dd>Nine values, including fat, carbohydrates, and protein.</dd>
+              <dd>Use nine nutrition values to estimate a missing calorie entry.</dd>
             </div>
             <div>
               <dt>
-                <span>02</span> Calorie estimate
+                <span>02</span> Check consistency
               </dt>
               <dd>
-                Degree-2 polynomial regression, selected using validation
-                results.
+                Compare a reported value with the estimate. Large differences need review, not automatic correction.
               </dd>
             </div>
             <div>
               <dt>
-                <span>03</span> Model comparison
+                <span>03</span> Understand the evidence
               </dt>
               <dd>
-                Six original models. Clearly separated validation and test
-                results.
+                Six original regressions. Completion and review are new uses, not validated imputation or anomaly detection.
               </dd>
             </div>
           </dl>

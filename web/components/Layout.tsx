@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 export const destinations = [
   ["overview.html", "Overview"],
-  ["estimator.html", "Estimator"],
+  ["estimator.html", "Calorie tool"],
   ["findings.html", "Findings"],
   ["case-study.html", "Case study"],
 ] as const;
@@ -40,14 +40,14 @@ export function Layout({
       </main>
       <footer>
         <p className="footer-heading">
-          Nutrition in.
+          Fill the gaps.
           <br />
-          <em>Calories in perspective.</em>
+          <em>Check the numbers.</em>
         </p>
         <a className="brand" href="index.html">
           PlatePredict
         </a>
-        <p>Nutrition data / Regression study</p>
+        <p>Calorie completion / Consistency review</p>
         <a href="https://github.com/etran011/platepredict">
           Source & original materials <span aria-hidden="true">↗</span>
         </a>
