@@ -1,0 +1,222 @@
+.estimator-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 5%;
+  padding: 56px 0 72px;
+  align-items: start;
+}
+.estimator-form {
+  background: #eeeade;
+  color: #273129;
+  padding: clamp(22px, 3vw, 40px);
+}
+.estimator-form-heading h2,
+.estimator-output h2 {
+  font-size: 2rem;
+  letter-spacing: -0.04em;
+  margin: 8px 0 16px;
+}
+.estimator-form-heading p,
+.preset-note,
+.preset-source {
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.estimator-form .eyebrow {
+  color: #705031;
+}
+.estimator-form select,
+.estimator-form input {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  border: 1px solid #838a76;
+  border-radius: 0;
+  background: #fffdf5;
+  color: #273129;
+  font: inherit;
+  padding: 10px 12px;
+}
+.preset-label {
+  display: block;
+  font-weight: 500;
+  margin: 24px 0 8px;
+}
+.preset-note {
+  color: #535d4d;
+  margin: 12px 0 20px;
+}
+.preset-source {
+  border-left: 3px solid #805737;
+  padding: 8px 0 8px 16px;
+  margin-bottom: 24px;
+}
+.preset-source p {
+  margin: 8px 0;
+}
+.preset-source a {
+  text-decoration: underline;
+}
+.estimator-form fieldset {
+  margin: 24px 0 0;
+  padding: 20px 0 0;
+  border: 0;
+  border-top: 1px solid #b8bcac;
+  min-width: 0;
+}
+.estimator-form legend {
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding-right: 12px;
+}
+.nutrition-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.nutrition-field label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 7px;
+}
+.nutrition-field label span {
+  color: #535d4d;
+}
+.nutrition-field input {
+  font-family: var(--mono);
+}
+.estimator-form input[aria-invalid="true"] {
+  border: 2px solid #a02d1d;
+}
+.estimator-form .input-error {
+  color: #8c271a;
+  font-size: 0.8rem;
+  margin: 8px 0 0;
+}
+.estimator-workspace button {
+  font: inherit;
+  font-size: 0.88rem;
+  border: 1px solid #a2a98e;
+  border-radius: 0;
+  min-height: 48px;
+  padding: 12px 18px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background 160ms;
+}
+.estimator-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+.estimator-actions .calculate {
+  background: #283e2d;
+  color: #fffdf4;
+  border-color: #283e2d;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.estimator-actions .calculate:hover:not(:disabled) {
+  background: #405a38;
+}
+.estimator-workspace button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+.estimator-workspace :is(input, select, button, a):focus-visible {
+  outline: 3px solid #e9c59a;
+  outline-offset: 4px;
+}
+.estimator-form :is(input, select, button, a):focus-visible {
+  outline-color: #805737;
+}
+.estimator-output {
+  padding-top: 12px;
+  min-width: 0;
+}
+.estimator-output > .eyebrow,
+.estimator-method .eyebrow {
+  color: #e9c59a;
+}
+.estimator-output h2 {
+  font-family: Georgia, serif;
+  font-style: italic;
+  color: #e9c59a;
+  font-weight: 400;
+}
+.estimate-status {
+  background: #343e2f;
+  padding: 28px;
+  margin: 24px 0;
+  border-top: 2px solid #c9ab7f;
+}
+.estimate-status p {
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+.estimate-status .estimate-value {
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  letter-spacing: -0.06em;
+  line-height: 1.2;
+  margin: 16px 0;
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+.estimate-value span {
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+.estimate-label,
+.model-version {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+.estimate-warning {
+  border-left: 3px solid #e9c59a;
+  padding-left: 16px;
+  margin-top: 20px;
+}
+.estimate-warning li {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+.estimate-warning ul {
+  padding-left: 18px;
+}
+.estimator-method {
+  padding-top: 24px;
+}
+.estimator-method h3 {
+  font-size: 1.1rem;
+  margin: 14px 0;
+}
+.estimator-method p {
+  line-height: 1.7;
+  font-size: 0.9rem;
+  margin-bottom: 18px;
+  color: #c3c7b7;
+}
+@media (max-width: 760px) {
+  .estimator-workspace {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 32px 0 48px;
+  }
+  .estimator-output {
+    padding-top: 0;
+  }
+}
+@media (max-width: 380px) {
+  .nutrition-fields {
+    grid-template-columns: 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .estimator-workspace button {
+    transition: none;
+  }
+}

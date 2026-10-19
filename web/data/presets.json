@@ -1,0 +1,57 @@
+{
+  "source_path": "archive/originals/FastFoodNutritionMenuV2.csv",
+  "dataset_sha256": "a7bd3b33a1a0e31b9e1bb1dc4cd5374b9ffb7eb81d9c8ed4937c19cd9175f0db",
+  "presets": [
+    {
+      "source_row": 0,
+      "restaurant": "McDonald\u2019s",
+      "item": "Hamburger",
+      "recorded_calories": 250.0,
+      "inputs": {
+        "Total_Fat_g": 9.0,
+        "Saturated_Fat_g": 3.5,
+        "Trans_Fat_g": 0.5,
+        "Cholesterol_mg": 25.0,
+        "Sodium_mg": 520.0,
+        "Carbs_g": 31.0,
+        "Fiber_g": 2.0,
+        "Sugars_g": 6.0,
+        "Protein_g": 12.0
+      }
+    },
+    {
+      "source_row": 100,
+      "restaurant": "McDonald\u2019s",
+      "item": "Fruit & Maple Oatmeal",
+      "recorded_calories": 290.0,
+      "inputs": {
+        "Total_Fat_g": 4.5,
+        "Saturated_Fat_g": 2.0,
+        "Trans_Fat_g": 0.0,
+        "Cholesterol_mg": 10.0,
+        "Sodium_mg": 160.0,
+        "Carbs_g": 57.0,
+        "Fiber_g": 5.0,
+        "Sugars_g": 32.0,
+        "Protein_g": 5.0
+      }
+    },
+    {
+      "source_row": 700,
+      "restaurant": "KFC",
+      "item": "SPICY CRISPY CHICKEN Thigh",
+      "recorded_calories": 270.0,
+      "inputs": {
+        "Total_Fat_g": 20.0,
+        "Saturated_Fat_g": 3.5,
+        "Trans_Fat_g": 0.0,
+        "Cholesterol_mg": 65.0,
+        "Sodium_mg": 720.0,
+        "Carbs_g": 10.0,
+        "Fiber_g": 1.0,
+        "Sugars_g": 0.0,
+        "Protein_g": 13.0
+      }
+    }
+  ]
+}

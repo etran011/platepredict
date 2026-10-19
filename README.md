@@ -196,15 +196,15 @@ static browser ES module.
 I’ve extracted preparation and corrected evaluation for my six original
 regression models. I plan to present the study and estimator in a polished web app.
 The browser artifact and standalone TypeScript inference are ready. The frontend
-foundation now includes the overview, estimator introduction, findings, and case
-study. The interactive estimator interface and deployment remain separate steps.
+now includes the overview, interactive estimator, findings, and case study.
+Deployment remains a separate step.
 
 I previously deployed the project on AWS EC2, but I no longer maintain that
 deployment. The new web presentation has not been deployed.
 
 ## Web presentation
 
-I use React, TypeScript, and Vite for the static presentation. The overview, estimator introduction, findings, and case study each have their own HTML entry point, so direct links work on GitHub Pages without a routing fallback. The estimator interface is not part of this foundation.
+I use React, TypeScript, and Vite for the static presentation. The overview, estimator, findings, and case study each have their own HTML entry point, so direct links work on GitHub Pages without a routing fallback.
 
 ```sh
 npm ci
@@ -223,4 +223,10 @@ I use [Daniel Torobekov’s toasted sandwich photograph](https://www.pexels.com/
 
 The interior page headers retain [Engin Akyurt’s burger and fries photograph](https://www.pexels.com/photo/burger-and-fries-on-white-plate-2271101/), also under the Pexels License. Both images are illustrative, not dataset records or predicted meals. Their license does not apply to the historical dataset or other project materials.
 
-The landing page links to the existing estimator introduction and findings. The study overview remains at `overview.html`. The interface uses warm charcoal and muted olive surfaces, with lighter charts and nutrition panels. The photographic landing style is shared across the existing pages; decorative background guides are omitted. Reduced-motion preferences disable entrance animations and transitions.
+The landing page links to the estimator and findings. The study overview remains at `overview.html`. The interface uses warm charcoal and muted olive surfaces, with lighter charts and nutrition panels. The photographic landing style is shared across the existing pages; decorative background guides are omitted. Reduced-motion preferences disable entrance animations and transitions.
+
+### Interactive estimator
+
+I reuse the verified browser inference module with the existing versioned model artifact. All nine inputs are editable, with units and grouped fields. The estimator rejects empty, negative, and nonfinite values, warns about inputs beyond training ranges, and hides outdated predictions after edits. Model loading failures offer a retry; no fallback prediction is substituted.
+
+The three historical presets in `web/data/presets.json` copy complete values from source rows 0, 100, and 700 of the original CSV (zero-based data records, excluding the header). The file records the dataset SHA-256. Recorded calories are displayed separately from model predictions and are never an input. These examples may have appeared in training and are not independent evaluation examples. Editing a preset switches to manual entry. Predictions display one decimal place; validation uses the unrounded values.

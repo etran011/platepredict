@@ -73,7 +73,7 @@ export default function Landing() {
             </EntryAction>
           </div>
           <p className="entry-status">
-            Estimator introduction available · Interactive form in development
+            Nine nutrition inputs · Predictions run in your browser
           </p>
         </div>
         <aside className="entry-panel" aria-labelledby="panel-title">
