@@ -521,8 +521,8 @@
 /* Decorative page photographs stay behind the introductory text only. */
 .app-shell[data-page="overview.html"] {
   --page-photo: url("/images/overview-burger.webp");
-  --photo-position: 50% 55%;
-  --photo-position-mobile: 65% 50%;
+  --photo-position: 50% 62%;
+  --photo-position-mobile: 48% 55%;
 }
 .app-shell[data-page="estimator.html"] {
   --page-photo: url("/images/estimator-nutrition.webp");
@@ -530,9 +530,9 @@
   --photo-position-mobile: 55% 70%;
 }
 .app-shell[data-page="findings.html"] {
-  --page-photo: url("/images/findings-pizza.webp");
-  --photo-position: 50% 50%;
-  --photo-position-mobile: 45% 50%;
+  --page-photo: url("/images/findings-pasta.webp");
+  --photo-position: 50% 62%;
+  --photo-position-mobile: 65% 60%;
 }
 .app-shell[data-page="case-study.html"] {
   --page-photo: url("/images/case-study-ingredients.webp");

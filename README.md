@@ -224,9 +224,9 @@ I use a distinct decorative food photograph for each view, connected by warm woo
 | View | Photograph and original source | Local image |
 | --- | --- | --- |
 | Landing | [Daniel Torobekov’s toasted sandwich](https://www.pexels.com/photo/a-sandwich-on-a-wooden-board-13689827/) | `landing-sandwich.webp` |
-| Overview | [Engin Akyurt’s burger and fries](https://www.pexels.com/photo/burger-and-fries-on-white-plate-2271101/) | `overview-burger.webp` |
+| Overview | [Eduardo Alemán’s cheeseburger and fries](https://www.pexels.com/photo/cheeseburger-and-fries-on-a-wooden-board-11401287/) | `overview-burger.webp` |
 | Estimator | [Jane T D.’s avocado, egg, and food bowl](https://www.pexels.com/photo/variety-of-food-on-wooden-coaster-793759/) | `estimator-nutrition.webp` |
-| Findings | [Piotr Arnoldes’s pizza](https://www.pexels.com/photo/yummy-pizza-with-pepperoni-slices-on-dark-background-6488932/) | `findings-pizza.webp` |
+| Findings | [Doğu Tuncer’s shrimp pasta](https://www.pexels.com/photo/a-pasta-on-a-black-plate-14537757/) | `findings-pasta.webp` |
 | Case study | [Diana Light’s baking ingredients](https://www.pexels.com/photo/ingredients-on-wooden-table-10994431/) | `case-study-ingredients.webp` |
 
 I verified each original source’s link to the [Pexels License](https://www.pexels.com/license/): free downloading, public website use, and modification are permitted without attribution. I serve optimized local WebP copies from `public/images`, with page-specific desktop and mobile crops and dark overlays. There are no visible photo credits. Interior photographs are decorative CSS backgrounds; the decorative landing image has empty alt text. The image license does not apply to the historical dataset or other project materials.
