@@ -15,7 +15,7 @@ export function Layout({
   children: ReactNode;
 }) {
   return (
-    <div className="app-shell">
+    <div className="app-shell" data-page={page}>
       <a className="skip-link" href="#main">
         Skip to content
       </a>

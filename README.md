@@ -217,11 +217,19 @@ The local site is served under `/platepredict/`. The production build goes to `d
 
 I checked all five production pages at phone and desktop widths, keyboard navigation, the skip link, and reduced-motion behavior. The existing browser inference checks still run with `npm test`.
 
-### Landing page imagery
+### Page imagery
 
-I use [Daniel Torobekov’s toasted sandwich photograph](https://www.pexels.com/photo/a-sandwich-on-a-wooden-board-13689827/) for the landing background. I compared it with a mushroom pasta photograph and an isolated burger image; its golden toast, muted greens, and softly lit background fit the warm palette best. The original source links to the [Pexels License](https://www.pexels.com/license/), which permits free downloading, website use, and modification without attribution. I serve an optimized local WebP with responsive cropping and an overlay, without a visible photo credit.
+I use a distinct decorative food photograph for each view, connected by warm wood, cream, muted greens, and golden food tones. These images illustrate the presentation, not dataset records, predictions, or evidence of nutritional quality. I keep them behind the introductory sections so forms and charts remain unobstructed.
 
-The interior page headers retain [Engin Akyurt’s burger and fries photograph](https://www.pexels.com/photo/burger-and-fries-on-white-plate-2271101/), also under the Pexels License. Both images are illustrative, not dataset records or predicted meals. Their license does not apply to the historical dataset or other project materials.
+| View | Photograph and original source | Local image |
+| --- | --- | --- |
+| Landing | [Daniel Torobekov’s toasted sandwich](https://www.pexels.com/photo/a-sandwich-on-a-wooden-board-13689827/) | `landing-sandwich.webp` |
+| Overview | [Engin Akyurt’s burger and fries](https://www.pexels.com/photo/burger-and-fries-on-white-plate-2271101/) | `overview-burger.webp` |
+| Estimator | [Jane T D.’s avocado, egg, and food bowl](https://www.pexels.com/photo/variety-of-food-on-wooden-coaster-793759/) | `estimator-nutrition.webp` |
+| Findings | [Piotr Arnoldes’s pizza](https://www.pexels.com/photo/yummy-pizza-with-pepperoni-slices-on-dark-background-6488932/) | `findings-pizza.webp` |
+| Case study | [Diana Light’s baking ingredients](https://www.pexels.com/photo/ingredients-on-wooden-table-10994431/) | `case-study-ingredients.webp` |
+
+I verified each original source’s link to the [Pexels License](https://www.pexels.com/license/): free downloading, public website use, and modification are permitted without attribution. I serve optimized local WebP copies from `public/images`, with page-specific desktop and mobile crops and dark overlays. There are no visible photo credits. Interior photographs are decorative CSS backgrounds; the decorative landing image has empty alt text. The image license does not apply to the historical dataset or other project materials.
 
 The landing page links to the estimator and findings. The study overview remains at `overview.html`. The interface uses warm charcoal and muted olive surfaces, with lighter charts and nutrition panels. The photographic landing style is shared across the existing pages; decorative background guides are omitted. Reduced-motion preferences disable entrance animations and transitions.
 

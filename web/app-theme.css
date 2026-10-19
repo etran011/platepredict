@@ -76,7 +76,10 @@
   position: absolute;
   inset: 0;
   z-index: -2;
-  background: url("/images/menu-meal.jpg") center 55% / cover;
+  background-image: var(--page-photo);
+  background-position: var(--photo-position);
+  background-size: cover;
+  filter: saturate(0.8);
 }
 .app-shell .page-intro:after,
 .app-shell .study-opening:after {
@@ -84,7 +87,7 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: #0c1912d9;
+  background: #0c1912cc;
 }
 .app-shell .page-intro h1,
 .app-shell .study-opening h1 {
@@ -324,7 +327,7 @@
   }
   .app-shell .page-intro:before,
   .app-shell .study-opening:before {
-    background-position: 65% center;
+    background-position: var(--photo-position-mobile);
   }
   .app-shell .opening-index > span {
     display: none;
@@ -514,3 +517,25 @@
 .comparison-context .eyebrow { color: #e9c59a; }
 .comparison-context h2 { font-size: 2rem; margin: 14px 0; }
 .comparison-context p { line-height: 1.7; margin-bottom: 18px; }
+
+/* Decorative page photographs stay behind the introductory text only. */
+.app-shell[data-page="overview.html"] {
+  --page-photo: url("/images/overview-burger.webp");
+  --photo-position: 50% 55%;
+  --photo-position-mobile: 65% 50%;
+}
+.app-shell[data-page="estimator.html"] {
+  --page-photo: url("/images/estimator-nutrition.webp");
+  --photo-position: 50% 76%;
+  --photo-position-mobile: 55% 70%;
+}
+.app-shell[data-page="findings.html"] {
+  --page-photo: url("/images/findings-pizza.webp");
+  --photo-position: 50% 50%;
+  --photo-position-mobile: 45% 50%;
+}
+.app-shell[data-page="case-study.html"] {
+  --page-photo: url("/images/case-study-ingredients.webp");
+  --photo-position: 50% 55%;
+  --photo-position-mobile: 30% 55%;
+}
