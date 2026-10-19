@@ -27,7 +27,7 @@ export default function Landing() {
     <div className="landing">
       <img
         className="landing-photo"
-        src={`${import.meta.env.BASE_URL}images/menu-meal.jpg`}
+        src={`${import.meta.env.BASE_URL}images/landing-pizza.webp`}
         alt=""
         fetchPriority="high"
       />
@@ -117,8 +117,8 @@ export default function Landing() {
       </main>
       <div className="entry-bottom">
         <span>964 complete records / 9 inputs / 6 models</span>
-        <a href="https://www.pexels.com/photo/burger-and-fries-on-white-plate-2271101/">
-          Photo: Engin Akyurt / Pexels
+        <a href="https://www.pexels.com/photo/yummy-pizza-with-pepperoni-slices-on-dark-background-6488932/">
+          Photo: Piotr Arnoldes / Pexels
         </a>
       </div>
     </div>

@@ -219,6 +219,8 @@ I checked all five production pages at phone and desktop widths, keyboard naviga
 
 ### Landing page imagery
 
-I use [Engin Akyurt’s burger and fries photograph](https://www.pexels.com/photo/burger-and-fries-on-white-plate-2271101/) under the [Pexels License](https://www.pexels.com/license/). The local image is displayed with a dark overlay. It is illustrative, not a dataset record or a predicted meal. The photograph’s license does not apply to the historical dataset or other project materials.
+I use [Piotr Arnoldes’s pizza photograph](https://www.pexels.com/photo/yummy-pizza-with-pepperoni-slices-on-dark-background-6488932/) for the landing background. I checked the photo’s original source page and its linked [Pexels License](https://www.pexels.com/license/), which permits free website use, downloading, and modification. Attribution is optional; I include the photographer credit on the page. The optimized local WebP uses responsive cropping and a dark overlay.
+
+The interior page headers retain [Engin Akyurt’s burger and fries photograph](https://www.pexels.com/photo/burger-and-fries-on-white-plate-2271101/), also under the Pexels License. Both images are illustrative, not dataset records or predicted meals. Their license does not apply to the historical dataset or other project materials.
 
 The landing page links to the existing estimator introduction and findings. The study overview remains at `overview.html`. The interface uses warm charcoal and muted olive surfaces, with lighter charts and nutrition panels. The photographic landing style is shared across the existing pages; decorative background guides are omitted. Reduced-motion preferences disable entrance animations and transitions.

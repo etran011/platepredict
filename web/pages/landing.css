@@ -25,7 +25,7 @@
 }
 .landing-photo {
   object-fit: cover;
-  object-position: 65% 58%;
+  object-position: 50% 50%;
   z-index: -3;
   animation: photo-reveal 1400ms ease-out both;
 }
@@ -35,7 +35,7 @@
     linear-gradient(
       90deg,
       rgba(8, 14, 10, 0.88) 0%,
-      rgba(8, 14, 10, 0.66) 43%,
+      rgba(8, 14, 10, 0.76) 43%,
       rgba(8, 14, 10, 0.16) 100%
     ),
     linear-gradient(
@@ -441,11 +441,11 @@
     line-height: 1.5;
   }
   .landing-photo {
-    object-position: 63% center;
+    object-position: 24% center;
   }
   .landing-shade {
     background:
-      linear-gradient(90deg, #08140ed9, #08140e73),
+      linear-gradient(90deg, #08140ee6, #08140e99),
       linear-gradient(0deg, #08140e88, transparent);
   }
 }
