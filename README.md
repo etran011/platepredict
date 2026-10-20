@@ -2,9 +2,11 @@
 
 I built PlatePredict from my original fast-food regression project. The current browser app estimates missing calorie values and compares reported calories with a model estimate, without overwriting the reported value. It includes the original study, corrected results, and interactive findings.
 
-PlatePredict is a legacy machine-learning project that was previously deployed on AWS EC2. That deployment is no longer running.
+The original AWS EC2 deployment is no longer running. The modernized interactive demo and case study are hosted on GitHub Pages.
 
-I previously deployed the project on EC2; I no longer maintain that deployment. This modernization runs predictions in the browser with React, TypeScript, and Vite. Python is used only for offline evaluation and model export. The static site is prepared for GitHub Pages but has not been deployed.
+**[Open PlatePredict](https://etran011.github.io/platepredict/)**
+
+I previously deployed the project on EC2; I no longer maintain that deployment. This modernization runs predictions in the browser with React, TypeScript, and Vite. Python is used only for offline evaluation and model export. The static site is hosted at `https://etran011.github.io/platepredict/`.
 
 ## Run locally
 
@@ -23,7 +25,7 @@ npm run build
 npm run preview
 ```
 
-The production preview is **http://127.0.0.1:4173/platepredict/**. The five HTML entry points support direct page links under `/platepredict/` without a routing fallback. Building writes to ignored `dist/`; it does not publish anything. No credentials, API keys, or Python server are needed to run the app. Fonts load from Google Fonts with system fallbacks; food images and the model are served locally.
+The production preview is **http://127.0.0.1:4173/platepredict/**. The five HTML entry points support direct page links under `/platepredict/` without a routing fallback. Building locally writes to ignored `dist/`; it does not publish anything. Pushes to `main` run the [Pages workflow](.github/workflows/pages.yml), which tests, builds, and publishes `dist/` using the official GitHub Pages actions. The workflow can also be run manually from Actions. No credentials, API keys, or Python server are needed to run the app. Fonts load from Google Fonts with system fallbacks; food images and the model are served locally.
 
 ## Actual app screenshots
 
