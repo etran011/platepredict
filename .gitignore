@@ -12,3 +12,14 @@ dist/
 *.egg-info/
 build/
 .build/
+
+# Local caches and credentials
+.pytest_cache/
+.coverage
+htmlcov/
+.aws/
+.ssh/
+.npmrc
+.pypirc
+*.pem
+*.key
